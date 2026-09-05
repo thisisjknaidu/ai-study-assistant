@@ -8,16 +8,69 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now())
+  id            String          @id
+  name          String
+  email         String          @unique
+  password      String
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime
 
-  notes       Note[]
-  quizResults QuizResult[]
-  studyTasks  StudyTask[]
-  subjects    Subject[]
+  Flashcard     Flashcard[]
+  Quiz          Quiz[]
+  StudyMaterial StudyMaterial[]
+
+  notes         Note[]
+  quizResults   QuizResult[]
+  studyTasks    StudyTask[]
+  subjects      Subject[]
+}
+
+model Flashcard {
+  id        String   @id
+  question  String
+  answer    String
+  createdAt DateTime @default(now())
+  userId    String
+
+  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Quiz {
+  id            String         @id
+  title         String
+  score         Int?
+  totalMarks    Int?
+  createdAt     DateTime       @default(now())
+  userId        String
+  materialId    String?
+
+  StudyMaterial StudyMaterial? @relation(fields: [materialId], references: [id])
+  User          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  QuizQuestion  QuizQuestion[]
+}
+
+model QuizQuestion {
+  id       String  @id
+  question String
+  answer   String
+  options  String?
+  quizId   String
+
+  Quiz     Quiz    @relation(fields: [quizId], references: [id], onDelete: Cascade)
+}
+
+model StudyMaterial {
+  id          String   @id
+  title       String
+  description String?
+  content     String?
+  fileUrl     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
+  userId      String
+
+  Quiz        Quiz[]
+  User        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Note {
@@ -27,11 +80,12 @@ model Note {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  userId    Int
+  userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
 }
+
 model QuizResult {
   id             Int      @id @default(autoincrement())
   score          Int
@@ -40,11 +94,12 @@ model QuizResult {
   subject        String?
   createdAt      DateTime @default(now())
 
-  userId         Int
+  userId         String
   user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
 }
+
 model StudyTask {
   id          Int      @id @default(autoincrement())
   title       String
@@ -55,18 +110,19 @@ model StudyTask {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  userId      Int
+  userId      String
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
 }
+
 model Subject {
   id        Int      @id @default(autoincrement())
   name      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  userId    Int
+  userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, name])
