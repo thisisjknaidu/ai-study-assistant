@@ -1,4 +1,4 @@
-import API_URL from "../config";
+﻿import API_URL from "../config";
 import { useEffect, useState } from "react";
 
 function QuizStats() {
@@ -9,7 +9,7 @@ function QuizStats() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
 
         if (!token) {
           throw new Error("Authentication required");
@@ -148,5 +148,6 @@ function QuizStats() {
 }
 
 export default QuizStats;
+
 
 

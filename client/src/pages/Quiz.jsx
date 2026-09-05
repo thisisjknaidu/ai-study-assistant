@@ -1,4 +1,4 @@
-import API_URL from "../config";
+﻿import API_URL from "../config";
 import { useEffect, useState } from "react";
 
 function Quiz() {
@@ -23,7 +23,7 @@ function Quiz() {
   useEffect(() => {
     const fetchSubjects = async () => {
       try {
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
 
         if (!token) {
           throw new Error("Authentication required");
@@ -67,7 +67,7 @@ function Quiz() {
       setShowResult(false);
       setSaveError("");
 
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
 
       if (!token) {
         throw new Error("Authentication required");
@@ -147,7 +147,7 @@ function Quiz() {
       setSaving(true);
       setSaveError("");
 
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
 
       if (!token) {
         throw new Error("Authentication token not found");
@@ -251,7 +251,7 @@ function Quiz() {
                 href="/subjects"
                 className="inline-block mt-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700"
               >
-                Go to Subjects →
+                Go to Subjects â†’
               </a>
             </div>
           )}
@@ -317,7 +317,7 @@ function Quiz() {
           </p>
 
           <h1 className="text-3xl font-bold text-slate-800 mt-2">
-            Quiz Complete 🎉
+            Quiz Complete ðŸŽ‰
           </h1>
 
           <p className="mt-4 text-slate-500">Your score</p>
@@ -428,5 +428,6 @@ function Quiz() {
 }
 
 export default Quiz;
+
 
 

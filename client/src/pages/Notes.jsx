@@ -1,4 +1,4 @@
-import API_URL from "../config";
+﻿import API_URL from "../config";
 import { useEffect, useState } from "react";
 
 function Notes() {
@@ -9,7 +9,7 @@ function Notes() {
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
 
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
 
   const fetchNotes = async () => {
     try {
@@ -111,7 +111,7 @@ function Notes() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900">📝 My Notes</h1>
+        <h1 className="text-3xl font-bold text-slate-900">ðŸ“ My Notes</h1>
 
         <p className="text-slate-500 mt-2">
           Create, save, and manage your study notes.
@@ -183,7 +183,7 @@ function Notes() {
           </div>
         ) : notes.length === 0 ? (
           <div className="bg-white rounded-xl border p-8 text-center">
-            <div className="text-4xl mb-3">📚</div>
+            <div className="text-4xl mb-3">ðŸ“š</div>
 
             <h3 className="font-semibold text-slate-900">No notes yet</h3>
 
@@ -228,6 +228,7 @@ function Notes() {
 }
 
 export default Notes;
+
 
 
 

@@ -1,4 +1,4 @@
-import API_URL from "../config";
+﻿import API_URL from "../config";
 import { useEffect, useState } from "react";
 
 function StudyPlan() {
@@ -17,7 +17,7 @@ function StudyPlan() {
 
   const fetchTasks = async () => {
     try {
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
 
       if (!token) {
         throw new Error("Authentication required");
@@ -46,7 +46,7 @@ function StudyPlan() {
 
   const fetchSubjects = async () => {
     try {
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
 
       if (!token) {
         throw new Error("Authentication required");
@@ -88,7 +88,7 @@ function StudyPlan() {
       setSaving(true);
       setError("");
 
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
 
       if (!token) {
         throw new Error("Authentication required");
@@ -136,7 +136,7 @@ function StudyPlan() {
     try {
       setError("");
 
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
 
       if (!token) {
         throw new Error("Authentication required");
@@ -171,7 +171,7 @@ function StudyPlan() {
     try {
       setError("");
 
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
 
       if (!token) {
         throw new Error("Authentication required");
@@ -245,7 +245,7 @@ function StudyPlan() {
             className="text-red-400 hover:text-red-600 font-bold"
             aria-label="Dismiss error"
           >
-            ✕
+            âœ•
           </button>
         </div>
       )}
@@ -351,12 +351,12 @@ function StudyPlan() {
                   </h2>
 
                   <p className="text-sm text-slate-500 mt-1">
-                    {pendingTasks.length} pending · {completedTasks.length}{" "}
+                    {pendingTasks.length} pending Â· {completedTasks.length}{" "}
                     completed
                   </p>
                 </div>
 
-                <div className="text-3xl">📅</div>
+                <div className="text-3xl">ðŸ“…</div>
               </div>
 
               <div className="flex flex-wrap gap-2 mt-5">
@@ -398,7 +398,7 @@ function StudyPlan() {
 
             {!loading && tasks.length === 0 && (
               <div className="py-12 text-center border-2 border-dashed border-slate-200 rounded-xl">
-                <div className="text-4xl mb-3">📚</div>
+                <div className="text-4xl mb-3">ðŸ“š</div>
 
                 <h3 className="font-semibold text-slate-700">
                   No study tasks yet
@@ -412,7 +412,7 @@ function StudyPlan() {
 
             {!loading && tasks.length > 0 && filteredTasks.length === 0 && (
               <div className="py-10 text-center border-2 border-dashed border-slate-200 rounded-xl">
-                <div className="text-4xl mb-3">🎉</div>
+                <div className="text-4xl mb-3">ðŸŽ‰</div>
 
                 <h3 className="font-semibold text-slate-700">
                   No tasks in this category
@@ -450,7 +450,7 @@ function StudyPlan() {
                             : "border-slate-300 hover:border-indigo-500"
                         }`}
                       >
-                        {task.completed && "✓"}
+                        {task.completed && "âœ“"}
                       </button>
 
                       <div className="flex-1 min-w-0">
@@ -494,7 +494,7 @@ function StudyPlan() {
                         title="Delete task"
                         aria-label="Delete task"
                       >
-                        🗑️
+                        ðŸ—‘ï¸
                       </button>
                     </div>
                   </div>
@@ -509,6 +509,7 @@ function StudyPlan() {
 }
 
 export default StudyPlan;
+
 
 
 

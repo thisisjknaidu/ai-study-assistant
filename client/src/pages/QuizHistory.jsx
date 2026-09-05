@@ -1,4 +1,4 @@
-import API_URL from "../config";
+﻿import API_URL from "../config";
 import { useEffect, useState } from "react";
 
 function QuizHistory() {
@@ -9,7 +9,7 @@ function QuizHistory() {
   useEffect(() => {
     const fetchResults = async () => {
       try {
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
 
         if (!token) {
           throw new Error("Authentication required");
@@ -122,7 +122,7 @@ function QuizHistory() {
                     {/* Subject */}
                     <td className="px-6 py-4">
                       <span className="font-medium text-slate-800">
-                        {result.subject || "—"}
+                        {result.subject || "â€”"}
                       </span>
                     </td>
 
@@ -164,5 +164,6 @@ function QuizHistory() {
 }
 
 export default QuizHistory;
+
 
 

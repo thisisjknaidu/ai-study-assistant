@@ -1,4 +1,4 @@
-import API_URL from "../config";
+﻿import API_URL from "../config";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -21,7 +21,7 @@ function CreateTask() {
   useEffect(() => {
     const fetchSubjects = async () => {
       try {
-        const token = localStorage.getItem("token");
+        const token = sessionStorage.getItem("token");
 
         if (!token) {
           throw new Error("Authentication required.");
@@ -85,7 +85,7 @@ function CreateTask() {
     try {
       setCreating(true);
 
-      const token = localStorage.getItem("token");
+      const token = sessionStorage.getItem("token");
 
       if (!token) {
         throw new Error("Authentication required.");
@@ -241,7 +241,7 @@ function CreateTask() {
               disabled={creating || subjects.length === 0}
               className="flex-1 bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {creating ? "Creating..." : "➕ Create Task"}
+              {creating ? "Creating..." : "âž• Create Task"}
             </button>
 
             <button
@@ -259,5 +259,6 @@ function CreateTask() {
 }
 
 export default CreateTask;
+
 
 
