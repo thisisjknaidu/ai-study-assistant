@@ -1,4 +1,4 @@
-﻿import API_URL from "../config";
+import API_URL from "../config";
 import { useState } from "react";
 
 function AITutor() {
@@ -79,7 +79,7 @@ function AITutor() {
   return (
     <div className="max-w-5xl mx-auto">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900">ðŸ¤– AI Tutor</h1>
+        <h1 className="text-3xl font-bold text-slate-900">🤖 AI Tutor</h1>
 
         <p className="text-slate-500 mt-2">
           Ask questions and get help understanding your studies.
@@ -90,7 +90,7 @@ function AITutor() {
         <div className="bg-slate-900 text-white p-5">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-xl">
-              ðŸ¤–
+              🤖
             </div>
 
             <div>
@@ -107,7 +107,7 @@ function AITutor() {
           {messages.length === 0 ? (
             <div className="h-[360px] flex items-center justify-center">
               <div className="text-center max-w-md">
-                <div className="text-5xl mb-4">ðŸ“š</div>
+                <div className="text-5xl mb-4">📚</div>
 
                 <h3 className="text-xl font-semibold text-slate-900">
                   What would you like to learn?
@@ -125,7 +125,7 @@ function AITutor() {
                     }
                     className="text-left bg-white border rounded-lg p-3 text-sm text-slate-600 hover:border-blue-400 hover:bg-blue-50 transition"
                   >
-                    ðŸŒ± Explain photosynthesis
+                    🌱 Explain photosynthesis
                   </button>
 
                   <button
@@ -134,7 +134,7 @@ function AITutor() {
                     }
                     className="text-left bg-white border rounded-lg p-3 text-sm text-slate-600 hover:border-blue-400 hover:bg-blue-50 transition"
                   >
-                    âš™ï¸ Explain Newton's laws
+                    ⚙️ Explain Newton's laws
                   </button>
 
                   <button
@@ -143,14 +143,14 @@ function AITutor() {
                     }
                     className="text-left bg-white border rounded-lg p-3 text-sm text-slate-600 hover:border-blue-400 hover:bg-blue-50 transition"
                   >
-                    ðŸ“ Help with quadratics
+                    📐 Help with quadratics
                   </button>
 
                   <button
                     onClick={() => setQuestion("Explain what an algorithm is.")}
                     className="text-left bg-white border rounded-lg p-3 text-sm text-slate-600 hover:border-blue-400 hover:bg-blue-50 transition"
                   >
-                    ðŸ’» What is an algorithm?
+                    💻 What is an algorithm?
                   </button>
                 </div>
               </div>
@@ -226,6 +226,5 @@ function AITutor() {
 }
 
 export default AITutor;
-
 
 

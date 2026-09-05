@@ -1,4 +1,4 @@
-﻿import API_URL from "../config";
+import API_URL from "../config";
 import { useEffect, useState } from "react";
 
 function Dashboard() {
@@ -214,25 +214,25 @@ function Dashboard() {
     {
       title: "Subjects",
       value: subjectsCount,
-      icon: "ðŸ“š",
+      icon: "📚",
       description: "Subjects available",
     },
     {
       title: "Notes",
       value: notesCount,
-      icon: "ðŸ“",
+      icon: "📝",
       description: "Notes created",
     },
     {
       title: "Best Quiz Score",
       value: `${quizStats.bestScore}%`,
-      icon: "ðŸ†",
+      icon: "🏆",
       description: `${quizStats.attempts} quiz attempts`,
     },
     {
       title: "Pending Tasks",
       value: pendingTasks,
-      icon: "ðŸ“…",
+      icon: "📅",
       description: "Study tasks remaining",
     },
   ];
@@ -313,7 +313,7 @@ function Dashboard() {
               </p>
             </div>
 
-            <div className="text-3xl">ðŸ“ˆ</div>
+            <div className="text-3xl">📈</div>
           </div>
 
           {/* Progress Bar */}
@@ -377,7 +377,7 @@ function Dashboard() {
             href="/quiz-stats"
             className="text-sm font-medium text-blue-600 hover:text-blue-700"
           >
-            View All â†’
+            View All →
           </a>
         </div>
 
@@ -388,7 +388,7 @@ function Dashboard() {
         ) : subjectStats.length === 0 ? (
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
             <div className="text-center py-4">
-              <div className="text-4xl mb-3">ðŸ“Š</div>
+              <div className="text-4xl mb-3">📊</div>
 
               <h3 className="font-semibold text-slate-700">
                 No subject performance yet
@@ -411,7 +411,7 @@ function Dashboard() {
                     {item.subject}
                   </h3>
 
-                  <span className="text-xl">ðŸ“š</span>
+                  <span className="text-xl">📚</span>
                 </div>
 
                 <div className="mt-4">
@@ -460,7 +460,7 @@ function Dashboard() {
       <div className="mt-8">
         <div className="mb-4">
           <h2 className="text-xl font-semibold text-slate-800">
-            ðŸ¤– AI Study Recommendations
+            🤖 AI Study Recommendations
           </h2>
 
           <p className="text-sm text-slate-500 mt-1">
@@ -475,7 +475,7 @@ function Dashboard() {
         ) : recommendations.length === 0 ? (
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
             <div className="text-center py-4">
-              <div className="text-4xl mb-3">ðŸŽ¯</div>
+              <div className="text-4xl mb-3">🎯</div>
 
               <h3 className="font-semibold text-slate-700">
                 No recommendations yet
@@ -497,7 +497,7 @@ function Dashboard() {
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-xl">
-                      ðŸ“š
+                      📚
                     </div>
 
                     <div>
@@ -581,7 +581,7 @@ function Dashboard() {
             href="/ai-tutor"
             className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-md transition"
           >
-            <div className="text-3xl mb-3">ðŸ¤–</div>
+            <div className="text-3xl mb-3">🤖</div>
 
             <h3 className="font-semibold text-slate-800">Ask AI Tutor</h3>
 
@@ -594,7 +594,7 @@ function Dashboard() {
             href="/notes"
             className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-md transition"
           >
-            <div className="text-3xl mb-3">ðŸ“</div>
+            <div className="text-3xl mb-3">📝</div>
 
             <h3 className="font-semibold text-slate-800">Create a Note</h3>
 
@@ -607,7 +607,7 @@ function Dashboard() {
             href="/quiz"
             className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-md transition"
           >
-            <div className="text-3xl mb-3">â“</div>
+            <div className="text-3xl mb-3">❓</div>
 
             <h3 className="font-semibold text-slate-800">Take a Quiz</h3>
 
@@ -632,7 +632,7 @@ function Dashboard() {
             </div>
           ) : recentActivity.length === 0 ? (
             <div className="p-8 text-center">
-              <div className="text-4xl mb-3">ðŸ“š</div>
+              <div className="text-4xl mb-3">📚</div>
 
               <h3 className="font-semibold text-slate-700">
                 No recent activity
@@ -650,7 +650,7 @@ function Dashboard() {
                   className="p-5 flex items-center gap-4"
                 >
                   <div className="w-11 h-11 rounded-xl bg-slate-100 flex items-center justify-center text-xl">
-                    {activity.type === "note" ? "ðŸ“" : "ðŸ“…"}
+                    {activity.type === "note" ? "📝" : "📅"}
                   </div>
 
                   <div className="flex-1">
@@ -681,6 +681,5 @@ function Dashboard() {
 }
 
 export default Dashboard;
-
 
 

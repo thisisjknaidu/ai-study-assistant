@@ -1,4 +1,4 @@
-﻿import API_URL from "../config";
+import API_URL from "../config";
 import { useEffect, useState } from "react";
 
 function Subjects() {
@@ -144,7 +144,7 @@ function Subjects() {
             className="text-red-400 hover:text-red-600 font-bold"
             aria-label="Dismiss error"
           >
-            âœ•
+            ✕
           </button>
         </div>
       )}
@@ -200,7 +200,7 @@ function Subjects() {
                 </p>
               </div>
 
-              <div className="text-3xl">ðŸ“š</div>
+              <div className="text-3xl">📚</div>
             </div>
 
             {loading && (
@@ -211,7 +211,7 @@ function Subjects() {
 
             {!loading && subjects.length === 0 && (
               <div className="py-12 text-center border-2 border-dashed border-slate-200 rounded-xl">
-                <div className="text-4xl mb-3">ðŸ“š</div>
+                <div className="text-4xl mb-3">📚</div>
 
                 <h3 className="font-semibold text-slate-700">
                   No subjects yet
@@ -232,7 +232,7 @@ function Subjects() {
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       <div className="w-11 h-11 rounded-xl bg-indigo-100 flex items-center justify-center text-xl flex-shrink-0">
-                        ðŸ“–
+                        📖
                       </div>
 
                       <h3 className="font-semibold text-slate-800 truncate">
@@ -247,7 +247,7 @@ function Subjects() {
                       title="Delete subject"
                       aria-label={`Delete ${subject.name}`}
                     >
-                      ðŸ—‘ï¸
+                      🗑️
                     </button>
                   </div>
                 ))}
@@ -261,7 +261,6 @@ function Subjects() {
 }
 
 export default Subjects;
-
 
 
 

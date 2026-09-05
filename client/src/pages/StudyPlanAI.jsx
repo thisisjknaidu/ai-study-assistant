@@ -1,4 +1,4 @@
-﻿import API_URL from "../config";
+import API_URL from "../config";
 import { useState } from "react";
 
 function StudyPlanAI() {
@@ -106,7 +106,7 @@ function StudyPlanAI() {
     <div>
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-800">ðŸ¤– AI Study Plan</h1>
+        <h1 className="text-3xl font-bold text-slate-800">🤖 AI Study Plan</h1>
 
         <p className="text-slate-500 mt-2">
           Get a personalized 7-day study plan based on your quiz performance.
@@ -132,7 +132,7 @@ function StudyPlanAI() {
             disabled={loading}
             className="px-6 py-3 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {loading ? "Generating..." : "âœ¨ Generate Study Plan"}
+            {loading ? "Generating..." : "✨ Generate Study Plan"}
           </button>
         </div>
       </div>
@@ -140,7 +140,7 @@ function StudyPlanAI() {
       {/* Success Message */}
       {successMessage && (
         <div className="mb-8 bg-green-50 border border-green-200 rounded-2xl p-5">
-          <h3 className="font-semibold text-green-700">âœ… Study Plan Added</h3>
+          <h3 className="font-semibold text-green-700">✅ Study Plan Added</h3>
 
           <p className="text-sm text-green-600 mt-1">{successMessage}</p>
         </div>
@@ -161,7 +161,7 @@ function StudyPlanAI() {
       {performance.length > 0 && (
         <div className="mb-8">
           <h2 className="text-xl font-semibold text-slate-800 mb-4">
-            ðŸ“Š Your Performance
+            📊 Your Performance
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -175,7 +175,7 @@ function StudyPlanAI() {
                     {item.subject}
                   </h3>
 
-                  <span className="text-xl">ðŸ“š</span>
+                  <span className="text-xl">📚</span>
                 </div>
 
                 <p className="text-3xl font-bold text-slate-800 mt-4">
@@ -183,7 +183,7 @@ function StudyPlanAI() {
                 </p>
 
                 <p className="text-xs text-slate-500 mt-1">
-                  Average score Â· {item.attempts}{" "}
+                  Average score · {item.attempts}{" "}
                   {item.attempts === 1 ? "attempt" : "attempts"}
                 </p>
 
@@ -208,7 +208,7 @@ function StudyPlanAI() {
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 mb-6">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-2xl">
-                ðŸ§ 
+                🧠
               </div>
 
               <div className="flex-1">
@@ -227,7 +227,7 @@ function StudyPlanAI() {
                   >
                     {addingPlan
                       ? "Adding to Study Plan..."
-                      : "ðŸ“… Add Plan to My Study Plan"}
+                      : "📅 Add Plan to My Study Plan"}
                   </button>
                 </div>
               </div>
@@ -251,7 +251,7 @@ function StudyPlanAI() {
                   <div className="flex-1">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                       <h3 className="text-lg font-semibold text-slate-800">
-                        Day {day.day} â€” {day.subject}
+                        Day {day.day} — {day.subject}
                       </h3>
 
                       <span className="text-xs font-medium px-3 py-1 rounded-full bg-blue-50 text-blue-700">
@@ -272,7 +272,7 @@ function StudyPlanAI() {
                       <div className="space-y-2">
                         {day.activities?.map((activity, index) => (
                           <div key={index} className="flex items-start gap-3">
-                            <span className="mt-0.5 text-blue-600">âœ“</span>
+                            <span className="mt-0.5 text-blue-600">✓</span>
 
                             <p className="text-sm text-slate-600">{activity}</p>
                           </div>
@@ -290,7 +290,7 @@ function StudyPlanAI() {
       {/* Empty State */}
       {!studyPlan && !loading && !error && (
         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-10 text-center">
-          <div className="text-5xl mb-4">ðŸ“š</div>
+          <div className="text-5xl mb-4">📚</div>
 
           <h2 className="text-xl font-semibold text-slate-800">
             Your personalized plan is waiting
@@ -307,6 +307,5 @@ function StudyPlanAI() {
 }
 
 export default StudyPlanAI;
-
 
 

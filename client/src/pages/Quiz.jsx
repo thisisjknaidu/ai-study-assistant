@@ -1,4 +1,4 @@
-﻿import API_URL from "../config";
+import API_URL from "../config";
 import { useEffect, useState } from "react";
 
 function Quiz() {
@@ -251,7 +251,7 @@ function Quiz() {
                 href="/subjects"
                 className="inline-block mt-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700"
               >
-                Go to Subjects â†’
+                Go to Subjects →
               </a>
             </div>
           )}
@@ -317,7 +317,7 @@ function Quiz() {
           </p>
 
           <h1 className="text-3xl font-bold text-slate-800 mt-2">
-            Quiz Complete ðŸŽ‰
+            Quiz Complete 🎉
           </h1>
 
           <p className="mt-4 text-slate-500">Your score</p>
@@ -428,6 +428,5 @@ function Quiz() {
 }
 
 export default Quiz;
-
 
 

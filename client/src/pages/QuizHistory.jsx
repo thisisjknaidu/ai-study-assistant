@@ -1,4 +1,4 @@
-﻿import API_URL from "../config";
+import API_URL from "../config";
 import { useEffect, useState } from "react";
 
 function QuizHistory() {
@@ -122,7 +122,7 @@ function QuizHistory() {
                     {/* Subject */}
                     <td className="px-6 py-4">
                       <span className="font-medium text-slate-800">
-                        {result.subject || "â€”"}
+                        {result.subject || "—"}
                       </span>
                     </td>
 
@@ -164,6 +164,5 @@ function QuizHistory() {
 }
 
 export default QuizHistory;
-
 
 

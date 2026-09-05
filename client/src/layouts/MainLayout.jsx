@@ -1,19 +1,19 @@
-﻿import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
 function MainLayout() {
   const navigate = useNavigate();
 
   const links = [
-    { name: "Dashboard", path: "/dashboard", icon: "ðŸ " },
-    { name: "Subjects", path: "/subjects", icon: "ðŸ“š" },
-    { name: "Notes", path: "/notes", icon: "ðŸ“" },
-    { name: "Study Plan", path: "/study-plan", icon: "ðŸ“…" },
-    { name: "Create Task", path: "/study-plan/create", icon: "âž•" },
-    { name: "AI Study Plan", path: "/ai-study-plan", icon: "ðŸ§ " },
-    { name: "AI Tutor", path: "/ai-tutor", icon: "ðŸ¤–" },
-    { name: "Quiz", path: "/quiz", icon: "â“" },
-    { name: "Quiz Stats", path: "/quiz-stats", icon: "ðŸ“ˆ" },
-    { name: "Quiz History", path: "/quiz-history", icon: "ðŸ“Š" },
+    { name: "Dashboard", path: "/dashboard", icon: "🏠" },
+    { name: "Subjects", path: "/subjects", icon: "📚" },
+    { name: "Notes", path: "/notes", icon: "📝" },
+    { name: "Study Plan", path: "/study-plan", icon: "📅" },
+    { name: "Create Task", path: "/study-plan/create", icon: "➕" },
+    { name: "AI Study Plan", path: "/ai-study-plan", icon: "🧠" },
+    { name: "AI Tutor", path: "/ai-tutor", icon: "🤖" },
+    { name: "Quiz", path: "/quiz", icon: "❓" },
+    { name: "Quiz Stats", path: "/quiz-stats", icon: "📈" },
+    { name: "Quiz History", path: "/quiz-history", icon: "📊" },
   ];
 
   const storedUser = sessionStorage.getItem("user");
@@ -35,7 +35,7 @@ function MainLayout() {
       <aside className="w-64 h-screen bg-slate-900 text-white p-6 flex flex-col sticky top-0">
         {/* Logo */}
         <div>
-          <h1 className="text-2xl font-bold mb-8">Study With AIðŸŽ“</h1>
+          <h1 className="text-2xl font-bold mb-8">Study With AI🎓</h1>
 
           {/* Navigation */}
           <nav className="space-y-2">
@@ -62,7 +62,7 @@ function MainLayout() {
             onClick={handleLogout}
             className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-red-500/10 hover:text-red-400 transition"
           >
-            <span>ðŸšª</span>
+            <span>🚪</span>
             <span>Logout</span>
           </button>
         </div>
@@ -96,4 +96,3 @@ function MainLayout() {
 }
 
 export default MainLayout;
-

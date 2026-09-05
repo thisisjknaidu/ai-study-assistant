@@ -1,4 +1,4 @@
-﻿import API_URL from "../config";
+import API_URL from "../config";
 import { useEffect, useState } from "react";
 
 function QuizStats() {
@@ -148,6 +148,5 @@ function QuizStats() {
 }
 
 export default QuizStats;
-
 
 
