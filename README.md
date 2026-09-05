@@ -6,7 +6,7 @@ An AI-powered full-stack study assistant that helps students organize subjects, 
 
 ### Frontend
 
-https://ai-study-assistant-client-nwqk.onrender.com
+https://ai-study-assistant-lzn2.onrender.com
 
 ### Backend API
 
