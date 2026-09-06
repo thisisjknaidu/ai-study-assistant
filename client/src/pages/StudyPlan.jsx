@@ -509,4 +509,3 @@ function StudyPlan() {
 }
 
 export default StudyPlan;
-n;
