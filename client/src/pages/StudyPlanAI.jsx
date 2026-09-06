@@ -23,7 +23,8 @@ function StudyPlanAI() {
       }
 
       const response = await fetch(
-        `${API_URL}/api/recommendations/study-plan`, {
+        `${API_URL}/api/recommendations/study-plan`,
+        {
           method: "POST",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -103,21 +104,23 @@ function StudyPlanAI() {
   };
 
   return (
-    <div>
+    <div className="w-full max-w-full overflow-hidden">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-800">🤖 AI Study Plan</h1>
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-slate-800">
+          🤖 AI Study Plan
+        </h1>
 
-        <p className="text-slate-500 mt-2">
+        <p className="text-sm sm:text-base text-slate-500 mt-2">
           Get a personalized 7-day study plan based on your quiz performance.
         </p>
       </div>
 
       {/* Generate Section */}
-      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 mb-8">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
-          <div>
-            <h2 className="text-xl font-semibold text-slate-800">
+      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 mb-6 sm:mb-8">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 sm:gap-5">
+          <div className="min-w-0">
+            <h2 className="text-lg sm:text-xl font-semibold text-slate-800">
               Create Your Study Plan
             </h2>
 
@@ -128,9 +131,10 @@ function StudyPlanAI() {
           </div>
 
           <button
+            type="button"
             onClick={generateStudyPlan}
             disabled={loading}
-            className="px-6 py-3 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full md:w-auto shrink-0 px-5 sm:px-6 py-3 bg-blue-600 text-white rounded-xl text-sm sm:text-base font-medium hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "Generating..." : "✨ Generate Study Plan"}
           </button>
@@ -139,46 +143,48 @@ function StudyPlanAI() {
 
       {/* Success Message */}
       {successMessage && (
-        <div className="mb-8 bg-green-50 border border-green-200 rounded-2xl p-5">
+        <div className="mb-6 sm:mb-8 bg-green-50 border border-green-200 rounded-2xl p-4 sm:p-5">
           <h3 className="font-semibold text-green-700">✅ Study Plan Added</h3>
 
-          <p className="text-sm text-green-600 mt-1">{successMessage}</p>
+          <p className="text-sm text-green-600 mt-1 break-words">
+            {successMessage}
+          </p>
         </div>
       )}
 
       {/* Error */}
       {error && (
-        <div className="mb-8 bg-red-50 border border-red-200 rounded-2xl p-5">
+        <div className="mb-6 sm:mb-8 bg-red-50 border border-red-200 rounded-2xl p-4 sm:p-5">
           <h3 className="font-semibold text-red-700">
             Unable to generate plan
           </h3>
 
-          <p className="text-sm text-red-600 mt-1">{error}</p>
+          <p className="text-sm text-red-600 mt-1 break-words">{error}</p>
         </div>
       )}
 
       {/* Performance */}
       {performance.length > 0 && (
-        <div className="mb-8">
-          <h2 className="text-xl font-semibold text-slate-800 mb-4">
+        <div className="mb-6 sm:mb-8">
+          <h2 className="text-lg sm:text-xl font-semibold text-slate-800 mb-4">
             📊 Your Performance
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {performance.map((item) => (
               <div
                 key={item.subject}
-                className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5"
+                className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-5 min-w-0"
               >
-                <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-slate-800">
+                <div className="flex items-center justify-between gap-3">
+                  <h3 className="font-semibold text-slate-800 truncate">
                     {item.subject}
                   </h3>
 
-                  <span className="text-xl">📚</span>
+                  <span className="text-xl shrink-0">📚</span>
                 </div>
 
-                <p className="text-3xl font-bold text-slate-800 mt-4">
+                <p className="text-2xl sm:text-3xl font-bold text-slate-800 mt-4">
                   {item.averageScore}%
                 </p>
 
@@ -187,9 +193,9 @@ function StudyPlanAI() {
                   {item.attempts === 1 ? "attempt" : "attempts"}
                 </p>
 
-                <div className="w-full bg-slate-100 rounded-full h-2 mt-4">
+                <div className="w-full bg-slate-100 rounded-full h-2 mt-4 overflow-hidden">
                   <div
-                    className="bg-blue-600 h-2 rounded-full"
+                    className="bg-blue-600 h-2 rounded-full transition-all duration-500"
                     style={{
                       width: `${Math.min(item.averageScore, 100)}%`,
                     }}
@@ -205,25 +211,28 @@ function StudyPlanAI() {
       {studyPlan && (
         <div>
           {/* Plan Header */}
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 mb-6">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-2xl">
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 mb-5 sm:mb-6">
+            <div className="flex flex-col sm:flex-row items-start gap-4">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-blue-50 flex items-center justify-center text-xl sm:text-2xl shrink-0">
                 🧠
               </div>
 
-              <div className="flex-1">
-                <h2 className="text-2xl font-bold text-slate-800">
+              <div className="flex-1 min-w-0">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-800 break-words">
                   {studyPlan.title}
                 </h2>
 
-                <p className="text-slate-500 mt-2">{studyPlan.summary}</p>
+                <p className="text-sm sm:text-base text-slate-500 mt-2 break-words">
+                  {studyPlan.summary}
+                </p>
 
                 {/* Add to Study Plan */}
                 <div className="mt-5">
                   <button
+                    type="button"
                     onClick={addPlanToStudyPlan}
                     disabled={addingPlan}
-                    className="px-5 py-3 bg-green-600 text-white rounded-xl font-medium hover:bg-green-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full sm:w-auto px-4 sm:px-5 py-3 bg-green-600 text-white rounded-xl text-sm sm:text-base font-medium hover:bg-green-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {addingPlan
                       ? "Adding to Study Plan..."
@@ -235,31 +244,31 @@ function StudyPlanAI() {
           </div>
 
           {/* Days */}
-          <div className="space-y-5">
+          <div className="space-y-4 sm:space-y-5">
             {studyPlan.days?.map((day) => (
               <div
                 key={day.day}
-                className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6"
+                className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6"
               >
-                <div className="flex flex-col md:flex-row md:items-start gap-5">
+                <div className="flex items-start gap-3 sm:gap-5">
                   {/* Day Number */}
-                  <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shrink-0">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-base sm:text-lg shrink-0">
                     {day.day}
                   </div>
 
                   {/* Content */}
-                  <div className="flex-1">
+                  <div className="flex-1 min-w-0">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                      <h3 className="text-lg font-semibold text-slate-800">
+                      <h3 className="text-base sm:text-lg font-semibold text-slate-800 break-words">
                         Day {day.day} — {day.subject}
                       </h3>
 
-                      <span className="text-xs font-medium px-3 py-1 rounded-full bg-blue-50 text-blue-700">
+                      <span className="self-start sm:self-auto text-[10px] sm:text-xs font-medium px-3 py-1 rounded-full bg-blue-50 text-blue-700 shrink-0">
                         Study Focus
                       </span>
                     </div>
 
-                    <p className="text-sm text-slate-600 mt-2">
+                    <p className="text-sm text-slate-600 mt-2 break-words">
                       <span className="font-medium">Focus:</span> {day.focus}
                     </p>
 
@@ -272,9 +281,13 @@ function StudyPlanAI() {
                       <div className="space-y-2">
                         {day.activities?.map((activity, index) => (
                           <div key={index} className="flex items-start gap-3">
-                            <span className="mt-0.5 text-blue-600">✓</span>
+                            <span className="mt-0.5 text-blue-600 shrink-0">
+                              ✓
+                            </span>
 
-                            <p className="text-sm text-slate-600">{activity}</p>
+                            <p className="text-sm text-slate-600 break-words min-w-0">
+                              {activity}
+                            </p>
                           </div>
                         ))}
                       </div>
@@ -289,10 +302,10 @@ function StudyPlanAI() {
 
       {/* Empty State */}
       {!studyPlan && !loading && !error && (
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-10 text-center">
-          <div className="text-5xl mb-4">📚</div>
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-10 text-center">
+          <div className="text-4xl sm:text-5xl mb-4">📚</div>
 
-          <h2 className="text-xl font-semibold text-slate-800">
+          <h2 className="text-lg sm:text-xl font-semibold text-slate-800">
             Your personalized plan is waiting
           </h2>
 
@@ -307,5 +320,3 @@ function StudyPlanAI() {
 }
 
 export default StudyPlanAI;
-
-

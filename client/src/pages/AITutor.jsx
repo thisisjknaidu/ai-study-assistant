@@ -77,24 +77,29 @@ function AITutor() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900">🤖 AI Tutor</h1>
+    <div className="w-full max-w-5xl mx-auto overflow-hidden">
+      <div className="mb-5 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 break-words">
+          🤖 AI Tutor
+        </h1>
 
-        <p className="text-slate-500 mt-2">
+        <p className="text-slate-500 mt-2 text-sm sm:text-base">
           Ask questions and get help understanding your studies.
         </p>
       </div>
 
       <div className="bg-white border rounded-2xl shadow-sm overflow-hidden">
-        <div className="bg-slate-900 text-white p-5">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-xl">
+        {/* Header */}
+        <div className="bg-slate-900 text-white p-4 sm:p-5">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-full bg-blue-600 flex items-center justify-center text-lg sm:text-xl">
               🤖
             </div>
 
-            <div>
-              <h2 className="font-semibold">StudyAI Tutor</h2>
+            <div className="min-w-0">
+              <h2 className="font-semibold text-sm sm:text-base">
+                StudyAI Tutor
+              </h2>
 
               <p className="text-xs text-slate-400">
                 Your personal study assistant
@@ -103,27 +108,28 @@ function AITutor() {
           </div>
         </div>
 
-        <div className="min-h-[420px] max-h-[520px] overflow-y-auto p-6 bg-slate-50">
+        {/* Messages */}
+        <div className="min-h-[360px] sm:min-h-[420px] max-h-[520px] overflow-y-auto p-3 sm:p-6 bg-slate-50">
           {messages.length === 0 ? (
-            <div className="h-[360px] flex items-center justify-center">
-              <div className="text-center max-w-md">
-                <div className="text-5xl mb-4">📚</div>
+            <div className="min-h-[330px] sm:h-[360px] flex items-center justify-center">
+              <div className="text-center w-full max-w-md">
+                <div className="text-4xl sm:text-5xl mb-4">📚</div>
 
-                <h3 className="text-xl font-semibold text-slate-900">
+                <h3 className="text-lg sm:text-xl font-semibold text-slate-900">
                   What would you like to learn?
                 </h3>
 
-                <p className="text-slate-500 mt-2">
+                <p className="text-slate-500 mt-2 text-sm sm:text-base leading-relaxed px-2">
                   Ask me about mathematics, science, programming, history, or
                   any other subject you're studying.
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5 sm:mt-6">
                   <button
                     onClick={() =>
                       setQuestion("Explain photosynthesis in simple terms.")
                     }
-                    className="text-left bg-white border rounded-lg p-3 text-sm text-slate-600 hover:border-blue-400 hover:bg-blue-50 transition"
+                    className="w-full text-left bg-white border rounded-lg p-3 text-sm text-slate-600 hover:border-blue-400 hover:bg-blue-50 transition break-words"
                   >
                     🌱 Explain photosynthesis
                   </button>
@@ -132,7 +138,7 @@ function AITutor() {
                     onClick={() =>
                       setQuestion("Explain Newton's laws of motion.")
                     }
-                    className="text-left bg-white border rounded-lg p-3 text-sm text-slate-600 hover:border-blue-400 hover:bg-blue-50 transition"
+                    className="w-full text-left bg-white border rounded-lg p-3 text-sm text-slate-600 hover:border-blue-400 hover:bg-blue-50 transition break-words"
                   >
                     ⚙️ Explain Newton's laws
                   </button>
@@ -141,14 +147,14 @@ function AITutor() {
                     onClick={() =>
                       setQuestion("Help me understand quadratic equations.")
                     }
-                    className="text-left bg-white border rounded-lg p-3 text-sm text-slate-600 hover:border-blue-400 hover:bg-blue-50 transition"
+                    className="w-full text-left bg-white border rounded-lg p-3 text-sm text-slate-600 hover:border-blue-400 hover:bg-blue-50 transition break-words"
                   >
                     📐 Help with quadratics
                   </button>
 
                   <button
                     onClick={() => setQuestion("Explain what an algorithm is.")}
-                    className="text-left bg-white border rounded-lg p-3 text-sm text-slate-600 hover:border-blue-400 hover:bg-blue-50 transition"
+                    className="w-full text-left bg-white border rounded-lg p-3 text-sm text-slate-600 hover:border-blue-400 hover:bg-blue-50 transition break-words"
                   >
                     💻 What is an algorithm?
                   </button>
@@ -156,7 +162,7 @@ function AITutor() {
               </div>
             </div>
           ) : (
-            <div className="space-y-5">
+            <div className="space-y-4 sm:space-y-5">
               {messages.map((message, index) => (
                 <div
                   key={index}
@@ -165,7 +171,7 @@ function AITutor() {
                   }`}
                 >
                   <div
-                    className={`max-w-[80%] rounded-2xl px-5 py-4 ${
+                    className={`max-w-[92%] sm:max-w-[80%] rounded-2xl px-4 py-3 sm:px-5 sm:py-4 ${
                       message.type === "user"
                         ? "bg-blue-600 text-white"
                         : message.type === "error"
@@ -173,7 +179,7 @@ function AITutor() {
                           : "bg-white border text-slate-700"
                     }`}
                   >
-                    <p className="whitespace-pre-wrap leading-relaxed">
+                    <p className="whitespace-pre-wrap break-words leading-relaxed text-sm sm:text-base">
                       {message.text}
                     </p>
                   </div>
@@ -182,7 +188,7 @@ function AITutor() {
 
               {loading && (
                 <div className="flex justify-start">
-                  <div className="bg-white border rounded-2xl px-5 py-4">
+                  <div className="bg-white border rounded-2xl px-4 py-3 sm:px-5 sm:py-4">
                     <div className="flex items-center gap-2">
                       <span className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" />
                       <span className="w-2 h-2 bg-slate-400 rounded-full animate-bounce [animation-delay:150ms]" />
@@ -195,27 +201,31 @@ function AITutor() {
           )}
         </div>
 
-        <div className="border-t bg-white p-5">
-          <form onSubmit={handleAsk} className="flex gap-3">
+        {/* Input */}
+        <div className="border-t bg-white p-3 sm:p-5">
+          <form
+            onSubmit={handleAsk}
+            className="flex flex-col sm:flex-row gap-3"
+          >
             <input
               type="text"
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               placeholder="Ask your study question..."
               disabled={loading}
-              className="flex-1 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-100"
+              className="w-full flex-1 border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-100 text-sm sm:text-base"
             />
 
             <button
               type="submit"
               disabled={loading || !question.trim()}
-              className="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 disabled:cursor-not-allowed text-white font-semibold px-6 rounded-xl transition"
+              className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 disabled:cursor-not-allowed text-white font-semibold px-6 py-3 sm:py-0 rounded-xl transition"
             >
               {loading ? "Thinking..." : "Ask"}
             </button>
           </form>
 
-          <p className="text-xs text-slate-400 mt-3">
+          <p className="text-xs text-slate-400 mt-3 leading-relaxed">
             AI responses are for learning assistance. Always review important
             information with your teacher or trusted study materials.
           </p>
@@ -226,5 +236,3 @@ function AITutor() {
 }
 
 export default AITutor;
-
-

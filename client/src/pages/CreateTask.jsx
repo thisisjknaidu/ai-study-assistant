@@ -17,7 +17,6 @@ function CreateTask() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  // Load subjects
   useEffect(() => {
     const fetchSubjects = async () => {
       try {
@@ -39,7 +38,6 @@ function CreateTask() {
           throw new Error(data.message || "Failed to load subjects.");
         }
 
-        // Handle both possible API response formats
         if (Array.isArray(data)) {
           setSubjects(data);
         } else if (Array.isArray(data.subjects)) {
@@ -60,7 +58,6 @@ function CreateTask() {
     fetchSubjects();
   }, []);
 
-  // Create task
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -113,13 +110,11 @@ function CreateTask() {
 
       setSuccess("Task created successfully!");
 
-      // Clear form
       setTitle("");
       setSubject("");
       setDueDate("");
       setDescription("");
 
-      // Go to Study Plan
       setTimeout(() => {
         navigate("/study-plan");
       }, 1000);
@@ -133,34 +128,31 @@ function CreateTask() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto">
-      {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-800">Create Task</h1>
+    <div className="w-full max-w-3xl mx-auto overflow-hidden">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-slate-800">
+          Create Task
+        </h1>
 
-        <p className="text-slate-500 mt-2">
+        <p className="text-sm sm:text-base text-slate-500 mt-2">
           Add a new task to your study plan.
         </p>
       </div>
 
-      {/* Form Card */}
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
-        {/* Error */}
+      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-6 md:p-8">
         {error && (
-          <div className="mb-6 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+          <div className="mb-5 sm:mb-6 bg-red-50 border border-red-200 text-red-700 px-3 sm:px-4 py-3 rounded-lg text-sm sm:text-base break-words">
             {error}
           </div>
         )}
 
-        {/* Success */}
         {success && (
-          <div className="mb-6 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg">
+          <div className="mb-5 sm:mb-6 bg-green-50 border border-green-200 text-green-700 px-3 sm:px-4 py-3 rounded-lg text-sm sm:text-base break-words">
             {success}
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Task Title */}
+        <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">
               Task Title
@@ -171,11 +163,10 @@ function CreateTask() {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Example: Practice algebra equations"
-              className="w-full border border-slate-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-slate-300 rounded-lg px-3 sm:px-4 py-3 text-sm sm:text-base outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
-          {/* Subject */}
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">
               Subject
@@ -185,7 +176,7 @@ function CreateTask() {
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
               disabled={loadingSubjects}
-              className="w-full border border-slate-300 rounded-lg px-4 py-3 bg-white outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-slate-300 rounded-lg px-3 sm:px-4 py-3 text-sm sm:text-base bg-white outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-100"
             >
               <option value="">
                 {loadingSubjects ? "Loading subjects..." : "Select a subject"}
@@ -199,13 +190,12 @@ function CreateTask() {
             </select>
 
             {!loadingSubjects && subjects.length === 0 && (
-              <p className="text-sm text-amber-600 mt-2">
+              <p className="text-xs sm:text-sm text-amber-600 mt-2">
                 No subjects found. Please create a subject first.
               </p>
             )}
           </div>
 
-          {/* Due Date */}
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">
               Due Date
@@ -215,11 +205,10 @@ function CreateTask() {
               type="datetime-local"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
-              className="w-full border border-slate-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-slate-300 rounded-lg px-3 sm:px-4 py-3 text-sm sm:text-base outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
-          {/* Description */}
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">
               Description
@@ -230,16 +219,15 @@ function CreateTask() {
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Add some details about this task..."
               rows="5"
-              className="w-full border border-slate-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+              className="w-full border border-slate-300 rounded-lg px-3 sm:px-4 py-3 text-sm sm:text-base outline-none focus:ring-2 focus:ring-blue-500 resize-none"
             />
           </div>
 
-          {/* Buttons */}
-          <div className="flex gap-4 pt-2">
+          <div className="flex flex-col-reverse sm:flex-row gap-3 sm:gap-4 pt-1 sm:pt-2">
             <button
               type="submit"
               disabled={creating || subjects.length === 0}
-              className="flex-1 bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full sm:flex-1 bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
             >
               {creating ? "Creating..." : "➕ Create Task"}
             </button>
@@ -247,7 +235,7 @@ function CreateTask() {
             <button
               type="button"
               onClick={() => navigate("/study-plan")}
-              className="px-6 py-3 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-100 transition"
+              className="w-full sm:w-auto px-6 py-3 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-100 transition text-sm sm:text-base"
             >
               Cancel
             </button>
@@ -259,5 +247,3 @@ function CreateTask() {
 }
 
 export default CreateTask;
-
-

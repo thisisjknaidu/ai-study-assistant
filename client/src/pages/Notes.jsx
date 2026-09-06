@@ -109,17 +109,19 @@ function Notes() {
   };
 
   return (
-    <div>
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-900">📝 My Notes</h1>
+    <div className="w-full max-w-full overflow-hidden">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">
+          📝 My Notes
+        </h1>
 
-        <p className="text-slate-500 mt-2">
+        <p className="text-sm sm:text-base text-slate-500 mt-2">
           Create, save, and manage your study notes.
         </p>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm border p-6 mb-8">
-        <h2 className="text-xl font-bold text-slate-900 mb-5">
+      <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-6 mb-6 sm:mb-8">
+        <h2 className="text-lg sm:text-xl font-bold text-slate-900 mb-4 sm:mb-5">
           Create a New Note
         </h2>
 
@@ -134,7 +136,7 @@ function Notes() {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Enter note title"
-              className="w-full border border-slate-200 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-slate-200 rounded-lg px-3 sm:px-4 py-3 text-sm sm:text-base outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
@@ -148,12 +150,12 @@ function Notes() {
               onChange={(e) => setContent(e.target.value)}
               placeholder="Write your study note..."
               rows="6"
-              className="w-full border border-slate-200 rounded-lg px-4 py-3 outline-none resize-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-slate-200 rounded-lg px-3 sm:px-4 py-3 text-sm sm:text-base outline-none resize-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           {message && (
-            <div className="bg-blue-50 border border-blue-200 text-blue-700 rounded-lg px-4 py-3 text-sm">
+            <div className="bg-blue-50 border border-blue-200 text-blue-700 rounded-lg px-3 sm:px-4 py-3 text-sm break-words">
               {message}
             </div>
           )}
@@ -161,7 +163,7 @@ function Notes() {
           <button
             type="submit"
             disabled={saving}
-            className="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 text-white font-semibold px-6 py-3 rounded-lg transition"
+            className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 text-white font-semibold px-6 py-3 rounded-lg transition text-sm sm:text-base"
           >
             {saving ? "Saving..." : "Save Note"}
           </button>
@@ -169,8 +171,10 @@ function Notes() {
       </div>
 
       <div>
-        <div className="flex items-center justify-between mb-5">
-          <h2 className="text-xl font-bold text-slate-900">Your Notes</h2>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4 sm:mb-5">
+          <h2 className="text-lg sm:text-xl font-bold text-slate-900">
+            Your Notes
+          </h2>
 
           <span className="text-sm text-slate-500">
             {notes.length} note{notes.length !== 1 ? "s" : ""}
@@ -178,44 +182,45 @@ function Notes() {
         </div>
 
         {loading ? (
-          <div className="bg-white rounded-xl border p-8 text-center text-slate-500">
+          <div className="bg-white rounded-xl border border-slate-200 p-6 sm:p-8 text-center text-sm sm:text-base text-slate-500">
             Loading notes...
           </div>
         ) : notes.length === 0 ? (
-          <div className="bg-white rounded-xl border p-8 text-center">
-            <div className="text-4xl mb-3">📚</div>
+          <div className="bg-white rounded-xl border border-slate-200 p-6 sm:p-8 text-center">
+            <div className="text-3xl sm:text-4xl mb-3">📚</div>
 
             <h3 className="font-semibold text-slate-900">No notes yet</h3>
 
-            <p className="text-slate-500 mt-1">
+            <p className="text-sm text-slate-500 mt-1">
               Create your first study note above.
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
             {notes.map((note) => (
               <div
                 key={note.id}
-                className="bg-white rounded-xl border shadow-sm p-6"
+                className="bg-white rounded-xl border border-slate-200 shadow-sm p-4 sm:p-6 min-w-0"
               >
-                <div className="flex items-start justify-between gap-4">
-                  <h3 className="text-lg font-bold text-slate-900">
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 break-words min-w-0">
                     {note.title}
                   </h3>
 
                   <button
+                    type="button"
                     onClick={() => handleDeleteNote(note.id)}
-                    className="text-red-500 hover:text-red-700 text-sm font-medium"
+                    className="text-red-500 hover:text-red-700 text-sm font-medium shrink-0 px-1"
                   >
                     Delete
                   </button>
                 </div>
 
-                <p className="text-slate-600 mt-4 whitespace-pre-wrap">
+                <p className="text-sm sm:text-base text-slate-600 mt-4 whitespace-pre-wrap break-words">
                   {note.content}
                 </p>
 
-                <p className="text-xs text-slate-400 mt-5">
+                <p className="text-xs text-slate-400 mt-5 break-words">
                   Created {new Date(note.createdAt).toLocaleString()}
                 </p>
               </div>
@@ -228,6 +233,3 @@ function Notes() {
 }
 
 export default Notes;
-
-
-

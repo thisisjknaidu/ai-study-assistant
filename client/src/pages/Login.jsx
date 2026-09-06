@@ -53,29 +53,34 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-slate-950 flex items-center justify-center px-4 py-8 sm:px-6">
       <div className="w-full max-w-md">
         {/* Logo */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-600 mb-4">
-            <span className="text-3xl">📚</span>
+
+        <div className="text-center mb-6 sm:mb-8">
+          <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-blue-600 mb-3 sm:mb-4">
+            <span className="text-2xl sm:text-3xl">📚</span>
           </div>
 
-          <h1 className="text-3xl font-bold text-white">AI Study Assistant</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-white break-words">
+            AI Study Assistant
+          </h1>
 
-          <p className="text-slate-400 mt-2">
+          <p className="text-sm sm:text-base text-slate-400 mt-2 px-2">
             Welcome back! Continue your learning journey.
           </p>
         </div>
 
         {/* Login Card */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-xl">
-          <h2 className="text-2xl font-semibold text-white mb-6">
+
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 sm:p-8 shadow-xl">
+          <h2 className="text-xl sm:text-2xl font-semibold text-white mb-5 sm:mb-6">
             Welcome Back
           </h2>
 
-          <form onSubmit={handleLogin} className="space-y-5">
+          <form onSubmit={handleLogin} className="space-y-4 sm:space-y-5">
             {/* Email */}
+
             <div>
               <label className="block text-sm font-medium text-slate-300 mb-2">
                 Email
@@ -87,11 +92,12 @@ function Login() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 required
-                className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                className="w-full px-3 sm:px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-sm sm:text-base text-white placeholder-slate-500 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
               />
             </div>
 
             {/* Password */}
+
             <div>
               <label className="block text-sm font-medium text-slate-300 mb-2">
                 Password
@@ -103,41 +109,44 @@ function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
                 required
-                className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                className="w-full px-3 sm:px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-sm sm:text-base text-white placeholder-slate-500 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
               />
             </div>
 
             {/* Message */}
+
             {message && (
-              <div className="bg-blue-500/10 border border-blue-500/30 text-blue-300 rounded-lg px-4 py-3 text-sm">
+              <div className="bg-blue-500/10 border border-blue-500/30 text-blue-300 rounded-lg px-3 sm:px-4 py-3 text-sm break-words">
                 {message}
               </div>
             )}
 
             {/* Login Button */}
+
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-900 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-lg transition"
+              className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-900 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-lg transition text-sm sm:text-base"
             >
               {loading ? "Signing in..." : "Sign In"}
             </button>
           </form>
 
           {/* Register */}
-          <div className="text-center mt-6 pt-6 border-t border-slate-800">
+
+          <div className="text-center mt-5 sm:mt-6 pt-5 sm:pt-6 border-t border-slate-800">
             <p className="text-slate-400 text-sm">Don't have an account?</p>
 
             <button
               onClick={() => navigate("/register")}
-              className="mt-2 text-blue-400 hover:text-blue-300 font-medium"
+              className="mt-2 text-blue-400 hover:text-blue-300 font-medium text-sm sm:text-base py-1"
             >
               Create an account
             </button>
           </div>
         </div>
 
-        <p className="text-center text-slate-600 text-xs mt-6">
+        <p className="text-center text-slate-600 text-xs mt-5 sm:mt-6">
           AI Study Assistant
         </p>
       </div>
@@ -146,5 +155,3 @@ function Login() {
 }
 
 export default Login;
-
-

@@ -238,15 +238,17 @@ function Dashboard() {
   ];
 
   return (
-    <div>
+    <div className="w-full max-w-full overflow-hidden">
       {/* -------------------------------- */}
       {/* Header */}
       {/* -------------------------------- */}
 
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-800">Dashboard</h1>
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-slate-800">
+          Dashboard
+        </h1>
 
-        <p className="text-slate-500 mt-2">
+        <p className="text-sm sm:text-base text-slate-500 mt-2">
           Welcome back! Here's your study overview.
         </p>
       </div>
@@ -256,8 +258,10 @@ function Dashboard() {
       {/* -------------------------------- */}
 
       {error && (
-        <div className="mb-6 bg-red-50 border border-red-200 rounded-xl p-4">
-          <p className="text-red-600">{error}</p>
+        <div className="mb-6 bg-red-50 border border-red-200 rounded-xl p-3 sm:p-4 overflow-hidden">
+          <p className="text-sm sm:text-base text-red-600 break-words">
+            {error}
+          </p>
         </div>
       )}
 
@@ -265,28 +269,28 @@ function Dashboard() {
       {/* Stats */}
       {/* -------------------------------- */}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {stats.map((stat) => (
           <div
             key={stat.title}
-            className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6"
+            className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 min-w-0"
           >
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-slate-500">
+            <div className="flex items-center justify-between gap-3">
+              <div className="min-w-0">
+                <p className="text-xs sm:text-sm font-medium text-slate-500 truncate">
                   {stat.title}
                 </p>
 
-                <p className="text-3xl font-bold text-slate-800 mt-2">
+                <p className="text-2xl sm:text-3xl font-bold text-slate-800 mt-2">
                   {loading ? "..." : stat.value}
                 </p>
 
-                <p className="text-xs text-slate-400 mt-2">
+                <p className="text-xs text-slate-400 mt-2 break-words">
                   {stat.description}
                 </p>
               </div>
 
-              <div className="text-3xl">{stat.icon}</div>
+              <div className="text-2xl sm:text-3xl shrink-0">{stat.icon}</div>
             </div>
           </div>
         ))}
@@ -296,24 +300,24 @@ function Dashboard() {
       {/* Study Progress */}
       {/* -------------------------------- */}
 
-      <div className="mt-8">
-        <h2 className="text-xl font-semibold text-slate-800 mb-4">
+      <div className="mt-6 sm:mt-8">
+        <h2 className="text-lg sm:text-xl font-semibold text-slate-800 mb-4">
           Study Progress
         </h2>
 
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-          <div className="flex items-center justify-between mb-4">
-            <div>
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
+          <div className="flex items-center justify-between gap-4 mb-4">
+            <div className="min-w-0">
               <p className="text-sm font-medium text-slate-500">
                 Task Completion
               </p>
 
-              <p className="text-3xl font-bold text-slate-800 mt-1">
+              <p className="text-2xl sm:text-3xl font-bold text-slate-800 mt-1">
                 {loading ? "..." : `${completionPercentage}%`}
               </p>
             </div>
 
-            <div className="text-3xl">📈</div>
+            <div className="text-2xl sm:text-3xl shrink-0">📈</div>
           </div>
 
           {/* Progress Bar */}
@@ -329,29 +333,35 @@ function Dashboard() {
 
           {/* Progress Details */}
 
-          <div className="grid grid-cols-3 gap-4 mt-5 text-center">
-            <div>
-              <p className="text-xl font-bold text-slate-800">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-5 text-center">
+            <div className="min-w-0">
+              <p className="text-lg sm:text-xl font-bold text-slate-800">
                 {loading ? "..." : completedTasks}
               </p>
 
-              <p className="text-xs text-slate-500 mt-1">Completed</p>
+              <p className="text-[11px] sm:text-xs text-slate-500 mt-1">
+                Completed
+              </p>
             </div>
 
-            <div>
-              <p className="text-xl font-bold text-slate-800">
+            <div className="min-w-0">
+              <p className="text-lg sm:text-xl font-bold text-slate-800">
                 {loading ? "..." : pendingTasks}
               </p>
 
-              <p className="text-xs text-slate-500 mt-1">Pending</p>
+              <p className="text-[11px] sm:text-xs text-slate-500 mt-1">
+                Pending
+              </p>
             </div>
 
-            <div>
-              <p className="text-xl font-bold text-slate-800">
+            <div className="min-w-0">
+              <p className="text-lg sm:text-xl font-bold text-slate-800">
                 {loading ? "..." : totalTasks}
               </p>
 
-              <p className="text-xs text-slate-500 mt-1">Total Tasks</p>
+              <p className="text-[11px] sm:text-xs text-slate-500 mt-1">
+                Total Tasks
+              </p>
             </div>
           </div>
         </div>
@@ -361,63 +371,65 @@ function Dashboard() {
       {/* Subject Performance */}
       {/* -------------------------------- */}
 
-      <div className="mt-8">
-        <div className="flex items-center justify-between mb-4">
-          <div>
-            <h2 className="text-xl font-semibold text-slate-800">
+      <div className="mt-6 sm:mt-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+          <div className="min-w-0">
+            <h2 className="text-lg sm:text-xl font-semibold text-slate-800">
               Subject Performance
             </h2>
 
-            <p className="text-sm text-slate-500 mt-1">
+            <p className="text-sm text-slate-500 mt-1 break-words">
               Your quiz performance by subject.
             </p>
           </div>
 
           <a
             href="/quiz-stats"
-            className="text-sm font-medium text-blue-600 hover:text-blue-700"
+            className="self-start sm:self-auto text-sm font-medium text-blue-600 hover:text-blue-700 whitespace-nowrap"
           >
             View All →
           </a>
         </div>
 
         {loading ? (
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-            <p className="text-slate-500">Loading subject performance...</p>
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
+            <p className="text-sm sm:text-base text-slate-500">
+              Loading subject performance...
+            </p>
           </div>
         ) : subjectStats.length === 0 ? (
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
             <div className="text-center py-4">
-              <div className="text-4xl mb-3">📊</div>
+              <div className="text-3xl sm:text-4xl mb-3">📊</div>
 
               <h3 className="font-semibold text-slate-700">
                 No subject performance yet
               </h3>
 
-              <p className="text-sm text-slate-500 mt-1">
+              <p className="text-sm text-slate-500 mt-1 break-words">
                 Complete a quiz to see your performance by subject.
               </p>
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {subjectStats.slice(0, 3).map((item) => (
               <div
                 key={item.subject}
-                className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5"
+                className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-5 min-w-0 overflow-hidden"
               >
-                <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-slate-800">
+                <div className="flex items-center justify-between gap-3">
+                  <h3 className="font-semibold text-slate-800 truncate min-w-0">
                     {item.subject}
                   </h3>
 
-                  <span className="text-xl">📚</span>
+                  <span className="text-xl shrink-0">📚</span>
                 </div>
 
                 <div className="mt-4">
-                  <div className="flex items-end justify-between">
-                    <div>
-                      <p className="text-3xl font-bold text-slate-800">
+                  <div className="flex items-end justify-between gap-3">
+                    <div className="min-w-0">
+                      <p className="text-2xl sm:text-3xl font-bold text-slate-800">
                         {item.averageScore}%
                       </p>
 
@@ -426,8 +438,8 @@ function Dashboard() {
                       </p>
                     </div>
 
-                    <div className="text-right">
-                      <p className="text-sm font-semibold text-slate-700">
+                    <div className="text-right shrink-0">
+                      <p className="text-xs sm:text-sm font-semibold text-slate-700">
                         Best: {item.bestScore}%
                       </p>
 
@@ -438,7 +450,7 @@ function Dashboard() {
                     </div>
                   </div>
 
-                  <div className="mt-4 w-full bg-slate-100 rounded-full h-2">
+                  <div className="mt-4 w-full bg-slate-100 rounded-full h-2 overflow-hidden">
                     <div
                       className="bg-blue-600 h-2 rounded-full transition-all duration-500"
                       style={{
@@ -457,51 +469,53 @@ function Dashboard() {
       {/* AI Study Recommendations */}
       {/* -------------------------------- */}
 
-      <div className="mt-8">
+      <div className="mt-6 sm:mt-8">
         <div className="mb-4">
-          <h2 className="text-xl font-semibold text-slate-800">
+          <h2 className="text-lg sm:text-xl font-semibold text-slate-800">
             🤖 AI Study Recommendations
           </h2>
 
-          <p className="text-sm text-slate-500 mt-1">
+          <p className="text-sm text-slate-500 mt-1 break-words">
             Focus on subjects that need the most improvement.
           </p>
         </div>
 
         {loading ? (
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-            <p className="text-slate-500">Loading recommendations...</p>
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
+            <p className="text-sm sm:text-base text-slate-500">
+              Loading recommendations...
+            </p>
           </div>
         ) : recommendations.length === 0 ? (
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
             <div className="text-center py-4">
-              <div className="text-4xl mb-3">🎯</div>
+              <div className="text-3xl sm:text-4xl mb-3">🎯</div>
 
               <h3 className="font-semibold text-slate-700">
                 No recommendations yet
               </h3>
 
-              <p className="text-sm text-slate-500 mt-1">
+              <p className="text-sm text-slate-500 mt-1 break-words">
                 Complete a subject quiz to get personalized study
                 recommendations.
               </p>
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {recommendations.slice(0, 3).map((recommendation) => (
               <div
                 key={recommendation.subject}
-                className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5"
+                className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-5 min-w-0 overflow-hidden"
               >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-xl">
+                <div className="flex items-start justify-between gap-3 mb-4">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-xl shrink-0">
                       📚
                     </div>
 
-                    <div>
-                      <h3 className="font-semibold text-slate-800">
+                    <div className="min-w-0">
+                      <h3 className="font-semibold text-slate-800 truncate">
                         {recommendation.subject}
                       </h3>
 
@@ -515,7 +529,7 @@ function Dashboard() {
                   </div>
 
                   <span
-                    className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                    className={`px-2 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-semibold shrink-0 ${
                       recommendation.priority === "High"
                         ? "bg-red-100 text-red-700"
                         : recommendation.priority === "Medium"
@@ -528,7 +542,7 @@ function Dashboard() {
                 </div>
 
                 <div className="mb-3">
-                  <p className="text-3xl font-bold text-slate-800">
+                  <p className="text-2xl sm:text-3xl font-bold text-slate-800">
                     {recommendation.averageScore}%
                   </p>
 
@@ -554,7 +568,7 @@ function Dashboard() {
                   />
                 </div>
 
-                <p className="text-sm text-slate-600 mt-4">
+                <p className="text-sm text-slate-600 mt-4 break-words">
                   {recommendation.priority === "High"
                     ? "Spend more study time on this subject."
                     : recommendation.priority === "Medium"
@@ -571,47 +585,49 @@ function Dashboard() {
       {/* Quick Actions */}
       {/* -------------------------------- */}
 
-      <div className="mt-8">
-        <h2 className="text-xl font-semibold text-slate-800 mb-4">
+      <div className="mt-6 sm:mt-8">
+        <h2 className="text-lg sm:text-xl font-semibold text-slate-800 mb-4">
           Quick Actions
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           <a
             href="/ai-tutor"
-            className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-md transition"
+            className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 hover:shadow-md transition min-w-0"
           >
             <div className="text-3xl mb-3">🤖</div>
 
             <h3 className="font-semibold text-slate-800">Ask AI Tutor</h3>
 
-            <p className="text-sm text-slate-500 mt-1">
+            <p className="text-sm text-slate-500 mt-1 break-words">
               Get help with your studies.
             </p>
           </a>
 
           <a
             href="/notes"
-            className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-md transition"
+            className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 hover:shadow-md transition min-w-0"
           >
             <div className="text-3xl mb-3">📝</div>
 
             <h3 className="font-semibold text-slate-800">Create a Note</h3>
 
-            <p className="text-sm text-slate-500 mt-1">
+            <p className="text-sm text-slate-500 mt-1 break-words">
               Save important study material.
             </p>
           </a>
 
           <a
             href="/quiz"
-            className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-md transition"
+            className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-6 hover:shadow-md transition min-w-0"
           >
             <div className="text-3xl mb-3">❓</div>
 
             <h3 className="font-semibold text-slate-800">Take a Quiz</h3>
 
-            <p className="text-sm text-slate-500 mt-1">Test your knowledge.</p>
+            <p className="text-sm text-slate-500 mt-1 break-words">
+              Test your knowledge.
+            </p>
           </a>
         </div>
       </div>
@@ -620,25 +636,27 @@ function Dashboard() {
       {/* Recent Activity */}
       {/* -------------------------------- */}
 
-      <div className="mt-8">
-        <h2 className="text-xl font-semibold text-slate-800 mb-4">
+      <div className="mt-6 sm:mt-8">
+        <h2 className="text-lg sm:text-xl font-semibold text-slate-800 mb-4">
           Recent Activity
         </h2>
 
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm">
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
           {loading ? (
-            <div className="p-6 text-center">
-              <p className="text-slate-500">Loading recent activity...</p>
+            <div className="p-5 sm:p-6 text-center">
+              <p className="text-sm sm:text-base text-slate-500">
+                Loading recent activity...
+              </p>
             </div>
           ) : recentActivity.length === 0 ? (
-            <div className="p-8 text-center">
-              <div className="text-4xl mb-3">📚</div>
+            <div className="p-6 sm:p-8 text-center">
+              <div className="text-3xl sm:text-4xl mb-3">📚</div>
 
               <h3 className="font-semibold text-slate-700">
                 No recent activity
               </h3>
 
-              <p className="text-sm text-slate-500 mt-1">
+              <p className="text-sm text-slate-500 mt-1 break-words">
                 Create a note or add a study task to get started.
               </p>
             </div>
@@ -647,25 +665,25 @@ function Dashboard() {
               {recentActivity.map((activity, index) => (
                 <div
                   key={`${activity.type}-${activity.title}-${index}`}
-                  className="p-5 flex items-center gap-4"
+                  className="p-4 sm:p-5 flex items-center gap-3 sm:gap-4 min-w-0"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-slate-100 flex items-center justify-center text-xl">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-slate-100 flex items-center justify-center text-lg sm:text-xl shrink-0">
                     {activity.type === "note" ? "📝" : "📅"}
                   </div>
 
-                  <div className="flex-1">
-                    <p className="font-medium text-slate-800">
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium text-sm sm:text-base text-slate-800 truncate">
                       {activity.title}
                     </p>
 
-                    <p className="text-sm text-slate-500 mt-1">
+                    <p className="text-xs sm:text-sm text-slate-500 mt-1">
                       {activity.type === "note"
                         ? "Note created"
                         : "Upcoming study task"}
                     </p>
                   </div>
 
-                  <p className="text-xs text-slate-400">
+                  <p className="text-[10px] sm:text-xs text-slate-400 shrink-0 text-right whitespace-nowrap">
                     {activity.date
                       ? new Date(activity.date).toLocaleDateString()
                       : "No date"}
@@ -681,5 +699,3 @@ function Dashboard() {
 }
 
 export default Dashboard;
-
-

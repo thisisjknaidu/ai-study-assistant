@@ -142,15 +142,12 @@ function StudyPlan() {
         throw new Error("Authentication required");
       }
 
-      const response = await fetch(
-        `${API_URL}/api/study-plan/${id}`,
-        {
-          method: "PATCH",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+      const response = await fetch(`${API_URL}/api/study-plan/${id}`, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-      );
+      });
 
       const data = await response.json();
 
@@ -177,15 +174,12 @@ function StudyPlan() {
         throw new Error("Authentication required");
       }
 
-      const response = await fetch(
-        `${API_URL}/api/study-plan/${id}`,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+      const response = await fetch(`${API_URL}/api/study-plan/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-      );
+      });
 
       const data = await response.json();
 
@@ -226,23 +220,27 @@ function StudyPlan() {
   });
 
   return (
-    <div className="max-w-6xl mx-auto">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-slate-800">Study Plan</h1>
+    <div className="w-full max-w-6xl mx-auto overflow-hidden">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold text-slate-800">
+          Study Plan
+        </h1>
 
-        <p className="text-slate-500 mt-2">
+        <p className="text-sm sm:text-base text-slate-500 mt-2">
           Organize your study tasks and keep track of your progress.
         </p>
       </div>
 
       {error && (
-        <div className="mb-6 bg-red-50 border border-red-200 rounded-xl p-4 flex items-center justify-between gap-4">
-          <p className="text-red-600">{error}</p>
+        <div className="mb-6 bg-red-50 border border-red-200 rounded-xl p-3 sm:p-4 flex items-start sm:items-center justify-between gap-3">
+          <p className="text-sm sm:text-base text-red-600 break-words min-w-0">
+            {error}
+          </p>
 
           <button
             type="button"
             onClick={() => setError("")}
-            className="text-red-400 hover:text-red-600 font-bold"
+            className="text-red-400 hover:text-red-600 font-bold shrink-0 p-1"
             aria-label="Dismiss error"
           >
             ✕
@@ -250,14 +248,14 @@ function StudyPlan() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         <div className="lg:col-span-1">
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-            <h2 className="text-xl font-semibold text-slate-800">
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
+            <h2 className="text-lg sm:text-xl font-semibold text-slate-800">
               Add Study Task
             </h2>
 
-            <p className="text-sm text-slate-500 mt-1 mb-6">
+            <p className="text-sm text-slate-500 mt-1 mb-5 sm:mb-6">
               Plan what you want to study next.
             </p>
 
@@ -272,7 +270,7 @@ function StudyPlan() {
                   value={title}
                   onChange={(event) => setTitle(event.target.value)}
                   placeholder="e.g. Study algebra"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+                  className="w-full px-3 sm:px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 text-sm sm:text-base"
                 />
               </div>
 
@@ -285,7 +283,7 @@ function StudyPlan() {
                   value={subject}
                   onChange={(event) => setSubject(event.target.value)}
                   disabled={subjects.length === 0}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 disabled:bg-slate-100 disabled:cursor-not-allowed"
+                  className="w-full px-3 sm:px-4 py-3 rounded-xl border border-slate-200 bg-white outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 disabled:bg-slate-100 disabled:cursor-not-allowed text-sm sm:text-base"
                 >
                   <option value="">Select a subject</option>
 
@@ -313,7 +311,7 @@ function StudyPlan() {
                   onChange={(event) => setDescription(event.target.value)}
                   placeholder="What do you need to study?"
                   rows="3"
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 resize-none"
+                  className="w-full px-3 sm:px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 resize-none text-sm sm:text-base"
                 />
               </div>
 
@@ -326,14 +324,14 @@ function StudyPlan() {
                   type="date"
                   value={dueDate}
                   onChange={(event) => setDueDate(event.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+                  className="w-full px-3 sm:px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 text-sm sm:text-base"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={saving || subjects.length === 0}
-                className="w-full py-3 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 disabled:bg-slate-300 disabled:cursor-not-allowed transition"
+                className="w-full py-3 rounded-xl bg-indigo-600 text-white text-sm sm:text-base font-semibold hover:bg-indigo-700 disabled:bg-slate-300 disabled:cursor-not-allowed transition"
               >
                 {saving ? "Adding..." : "Add to Study Plan"}
               </button>
@@ -341,12 +339,12 @@ function StudyPlan() {
           </div>
         </div>
 
-        <div className="lg:col-span-2">
-          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-            <div className="mb-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h2 className="text-xl font-semibold text-slate-800">
+        <div className="lg:col-span-2 min-w-0">
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
+            <div className="mb-5 sm:mb-6">
+              <div className="flex items-center justify-between gap-3">
+                <div className="min-w-0">
+                  <h2 className="text-lg sm:text-xl font-semibold text-slate-800">
                     Your Tasks
                   </h2>
 
@@ -356,10 +354,10 @@ function StudyPlan() {
                   </p>
                 </div>
 
-                <div className="text-3xl">📅</div>
+                <div className="text-2xl sm:text-3xl shrink-0">📅</div>
               </div>
 
-              <div className="flex flex-wrap gap-2 mt-5">
+              <div className="flex flex-wrap gap-2 mt-4 sm:mt-5">
                 {[
                   {
                     label: "All",
@@ -378,7 +376,7 @@ function StudyPlan() {
                     key={option.value}
                     type="button"
                     onClick={() => setFilter(option.value)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+                    className={`px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition ${
                       filter === option.value
                         ? "bg-indigo-600 text-white"
                         : "bg-slate-100 text-slate-600 hover:bg-slate-200"
@@ -391,14 +389,16 @@ function StudyPlan() {
             </div>
 
             {loading && (
-              <div className="py-12 text-center">
-                <p className="text-slate-500">Loading your study plan...</p>
+              <div className="py-10 sm:py-12 text-center">
+                <p className="text-sm sm:text-base text-slate-500">
+                  Loading your study plan...
+                </p>
               </div>
             )}
 
             {!loading && tasks.length === 0 && (
-              <div className="py-12 text-center border-2 border-dashed border-slate-200 rounded-xl">
-                <div className="text-4xl mb-3">📚</div>
+              <div className="py-10 sm:py-12 px-4 text-center border-2 border-dashed border-slate-200 rounded-xl">
+                <div className="text-3xl sm:text-4xl mb-3">📚</div>
 
                 <h3 className="font-semibold text-slate-700">
                   No study tasks yet
@@ -411,8 +411,8 @@ function StudyPlan() {
             )}
 
             {!loading && tasks.length > 0 && filteredTasks.length === 0 && (
-              <div className="py-10 text-center border-2 border-dashed border-slate-200 rounded-xl">
-                <div className="text-4xl mb-3">🎉</div>
+              <div className="py-10 px-4 text-center border-2 border-dashed border-slate-200 rounded-xl">
+                <div className="text-3xl sm:text-4xl mb-3">🎉</div>
 
                 <h3 className="font-semibold text-slate-700">
                   No tasks in this category
@@ -429,13 +429,13 @@ function StudyPlan() {
                 {filteredTasks.map((task) => (
                   <div
                     key={task.id}
-                    className={`border rounded-xl p-5 transition ${
+                    className={`border rounded-xl p-4 sm:p-5 transition ${
                       task.completed
                         ? "border-green-200 bg-green-50"
                         : "border-slate-200 bg-white"
                     }`}
                   >
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-3 sm:gap-4">
                       <button
                         type="button"
                         onClick={() => toggleTask(task.id)}
@@ -444,7 +444,7 @@ function StudyPlan() {
                             ? "Mark task as pending"
                             : "Mark task as completed"
                         }
-                        className={`mt-1 w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition ${
+                        className={`mt-1 w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 transition ${
                           task.completed
                             ? "border-green-500 bg-green-500 text-white"
                             : "border-slate-300 hover:border-indigo-500"
@@ -456,7 +456,7 @@ function StudyPlan() {
                       <div className="flex-1 min-w-0">
                         <div className="flex flex-wrap items-center gap-2">
                           <h3
-                            className={`font-semibold ${
+                            className={`font-semibold text-sm sm:text-base break-words ${
                               task.completed
                                 ? "text-green-700 line-through"
                                 : "text-slate-800"
@@ -465,14 +465,14 @@ function StudyPlan() {
                             {task.title}
                           </h3>
 
-                          <span className="px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-700 text-xs font-semibold">
+                          <span className="px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-700 text-[10px] sm:text-xs font-semibold max-w-full truncate">
                             {task.subject}
                           </span>
                         </div>
 
                         {task.description && (
                           <p
-                            className={`text-sm mt-2 ${
+                            className={`text-sm mt-2 break-words ${
                               task.completed
                                 ? "text-green-600"
                                 : "text-slate-500"
@@ -490,7 +490,7 @@ function StudyPlan() {
                       <button
                         type="button"
                         onClick={() => deleteTask(task.id)}
-                        className="text-slate-400 hover:text-red-500 transition"
+                        className="text-slate-400 hover:text-red-500 transition shrink-0 p-1"
                         title="Delete task"
                         aria-label="Delete task"
                       >
@@ -509,6 +509,4 @@ function StudyPlan() {
 }
 
 export default StudyPlan;
-
-
-
+n;
